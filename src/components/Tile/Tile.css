@@ -1,0 +1,43 @@
+.tile {
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+
+
+.tile .even {
+  background: rgb(255, 252, 50);
+  width: 100%;
+  height: 100%;
+}
+
+.tile .odd {
+  background: #ddd;
+  width: 100%;
+  height: 100%;
+}
+
+.kbd-navigation .tile:focus {
+  background: #ddd;
+}
+
+.tile .button {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.tile .path{
+  background: rgb(174, 248, 0);
+  width: 100%;
+  height: 100%;
+}
+
