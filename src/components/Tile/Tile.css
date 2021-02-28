@@ -12,8 +12,6 @@
   width: 34px;
 }
 
-
-
 .tile .even {
   background: rgb(255, 252, 50);
   width: 100%;
@@ -24,10 +22,6 @@
   background: #ddd;
   width: 100%;
   height: 100%;
-}
-
-.kbd-navigation .tile:focus {
-  background: #ddd;
 }
 
 .tile .button {

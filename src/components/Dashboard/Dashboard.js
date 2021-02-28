@@ -74,8 +74,21 @@ const Dashboard = ({ fenCode }) => {
   };
 
   const showAvailablePathForPiece = (piece) => {
+    const { value } = piece;
     clearPath();
     setSelectedTile(piece);
+
+    switch (value) {
+      case PIECE_VALUE.WHITE.PAWN:
+        showAvailablePathForPawn(piece);
+        break;
+      default:
+        console.log("Piece not found");
+    }
+    setDashboard([...dashboard]);
+  };
+
+  const showAvailablePathForPawn = (piece) => {
     const { row, col } = piece;
     if (row > 0 && !dashboard[row - 1][col].value) {
       dashboard[row - 1][col].value = PIECE_VALUE.PATH;
@@ -83,7 +96,6 @@ const Dashboard = ({ fenCode }) => {
     if (row === 6 && !dashboard[row - 2][col].value) {
       dashboard[row - 2][col].value = PIECE_VALUE.PATH;
     }
-    setDashboard([...dashboard]);
   };
 
   const clearPath = () => {
