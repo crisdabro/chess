@@ -6,7 +6,6 @@ import { FEN } from "./constants/constants";
 function App() {
   return (
     <main>
-      <h1>CHESS</h1>
       <Dashboard className="body" fenCode={FEN.CHALLENGE} />
     </main>
   );

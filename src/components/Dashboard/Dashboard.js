@@ -4,6 +4,7 @@ import "./Dashboard.css";
 import Tile from "../Tile/Tile.js";
 import { PIECE_VALUE, BUTTONS } from "../../constants/constants";
 import { getRandomNumberInRange } from "../../utils/math";
+import { Button, Grid, Box } from "@material-ui/core";
 
 const Dashboard = ({ fenCode }) => {
   const [dashboard, setDashboard] = useState([]);
@@ -76,7 +77,7 @@ const Dashboard = ({ fenCode }) => {
     clearPath();
     setSelectedTile(piece);
     const { row, col } = piece;
-    if (row - 1 >= 0 && !dashboard[row - 1][col].value) {
+    if (row > 0 && !dashboard[row - 1][col].value) {
       dashboard[row - 1][col].value = PIECE_VALUE.PATH;
     }
     if (row === 6 && !dashboard[row - 2][col].value) {
@@ -106,22 +107,34 @@ const Dashboard = ({ fenCode }) => {
   };
 
   return (
-    <div>
-      {dashboard &&
-        dashboard.map((row, index) => (
-          <div key={index}>
-            {row.map((tile, index) => (
-              <Tile
-                key={index}
-                tile={tile}
-                handlePieceClick={showAvailablePathForPiece}
-                handlePathClick={movePawnToTile}
-              />
-            ))}
-          </div>
-        ))}
-      <button onClick={addPawnToRandomTile}>{BUTTONS.ADD_PAWN}</button>
-    </div>
+    <Grid container direction="column" justify="center" alignItems="center">
+      <div>
+        {dashboard &&
+          dashboard.map((row, index) => (
+            <div key={index}>
+              {row.map((tile, index) => (
+                <Tile
+                  key={index}
+                  tile={tile}
+                  handlePieceClick={showAvailablePathForPiece}
+                  handlePathClick={movePawnToTile}
+                />
+              ))}
+            </div>
+          ))}
+      </div>
+      <Box mt={2}>
+        <Button
+          mt={5}
+          variant="outlined"
+          size="large"
+          color="primary"
+          onClick={addPawnToRandomTile}
+        >
+          {BUTTONS.ADD_PAWN}
+        </Button>
+      </Box>
+    </Grid>
   );
 };
 
